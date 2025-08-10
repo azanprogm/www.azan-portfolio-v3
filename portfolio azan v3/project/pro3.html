@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form login and register </title>
+    <link rel="stylesheet" href="proyekCss/loginPROYEK.css">
+    <link rel="shortcut icon" href="/gambar/hackerEMENG-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" </head>
+
+<body>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* container */
+        /* content */
+        body {
+            background-image: url("/project/latarbelakang.jpg");
+            background-position: center;
+            background-size: cover;
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.042);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 11px rgba(255, 255, 255, 0.13);
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            color: black;
+            user-select: none;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .nav-links a {
+            position: relative;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: rgb(0, 0, 0);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            margin: 5% auto;
+        }
+
+        .box-container .container2 {
+            margin: 12%;
+        }
+
+        @media (min-width: 768px) {
+            .content-container {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        /* login web */
+        .box-container {
+            /*justify-content: center;
+    align-items: center;
+    display: flex;*/
+            margin: 50px;
+            border: 1px solid rgb(212, 207, 207);
+            box-shadow: 0px 7px 25px rgb(0, 0, 0);
+            width: 350px;
+            height: 420px;
+            padding: 26.8px;
+            border-radius: 18px;
+            backdrop-filter: blur(15px);
+        }
+
+        .header {
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .header h3 {
+            font-size: 25px;
+            font-weight: 800;
+            color: aliceblue;
+            letter-spacing: 1px;
+        }
+
+        .user {
+            position: relative;
+        }
+
+        .user i {
+            position: absolute;
+            left: 86%;
+            margin: 12.8px;
+            color: rgb(0, 0, 0);
+        }
+
+        .lock {
+            position: relative;
+        }
+
+        .lock i {
+            position: absolute;
+            left: 86%;
+            margin: 12.8px;
+        }
+
+        .input-box input {
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            margin: 11px auto;
+            display: flex;
+            border: 1.5px solid rgba(119, 118, 118, 0.171);
+            width: 298px;
+            outline: none;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: rgba(231, 235, 238, 0.596);
+            backdrop-filter: blur(30px);
+        }
+
+        .snow {
+            display: flex;
+        }
+
+        .snow input {
+            cursor: pointer;
+        }
+
+        .snow p {
+            margin: 5px;
+            font-size: 13px;
+        }
+
+        .btn {
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .btn button {
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: black;
+            color: whitesmoke;
+            font-size: 15px;
+            font-weight: 600;
+            width: 292px;
+            cursor: pointer;
+        }
+
+        .btn button:hover {
+            box-shadow: 0px 0px 16px rgb(72, 141, 221);
+            background-color: rgb(40, 128, 217);
+            transform: translateY(2px) scale(1.06);
+        }
+
+        .link {
+            justify-content: center;
+            align-items: center;
+            margin: 0px auto;
+            display: flex;
+            font-size: 15px;
+            color: aliceblue;
+            backdrop-filter: blur(70px);
+        }
+
+        .link a {
+            color: aliceblue;
+            font-weight: 600;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        /* register */
+        .container2 {
+            /*justify-content: center;
+  align-items: center;
+  margin: 170px auto;
+  display: flex;*/
+            margin: 50px;
+            border: 1px solid rgb(212, 207, 207);
+            box-shadow: 0px 7px 25px rgb(0, 0, 0);
+            width: 350px;
+            height: 420px;
+            border-radius: 18px;
+            backdrop-filter: blur(15px);
+        }
+
+        .header2 {
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .header2 h3 {
+            font-size: 25px;
+            font-weight: 800;
+            color: aliceblue;
+        }
+
+        .input-box2 input {
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            margin: 9px auto;
+            display: flex;
+            border: 1.5px solid rgba(119, 118, 118, 0.171);
+            width: 298px;
+            outline: none;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: rgba(231, 235, 238, 0.596);
+            backdrop-filter: blur(30px);
+        }
+
+        .btn2 {
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .btn2 button {
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: black;
+            color: whitesmoke;
+            font-size: 15px;
+            font-weight: 600;
+            width: 292px;
+            cursor: pointer;
+        }
+
+        .btn2 button:hover {
+            box-shadow: 0px 0px 16px rgb(72, 141, 221);
+            background-color: rgb(40, 128, 217);
+            transform: translateY(2px) scale(1.06);
+        }
+
+        .link2 {
+            justify-content: center;
+            align-items: center;
+            margin: 0px auto;
+            display: flex;
+            font-size: 15px;
+            color: aliceblue;
+            backdrop-filter: blur(70px);
+        }
+
+        .link2 a {
+            color: aliceblue;
+            font-weight: 600;
+        }
+
+        .link2 a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        /* paragraf abput website */
+        .container {
+            background: rgba(255, 255, 255, 0.479);
+            padding: 32px 40px;
+        }
+
+        h1.intro {
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        ul.styled-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        ul.styled-list li {
+            position: relative;
+            padding-left: 36px;
+            font-size: 1.1rem;
+            cursor: default;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px;
+            }
+
+            p.intro {
+                font-size: 1.1rem;
+                margin-bottom: 16px;
+            }
+
+            ul.styled-list li {
+                font-size: 1rem;
+                padding-left: 30px;
+            }
+
+            ul.styled-list li::before {
+                width: 10px;
+                height: 10px;
+                left: 2px;
+            }
+        }
+
+
+        /* point penting */
+        .important-form {
+            background: rgba(255, 255, 255, 0.479);
+            color: #0e0c0c;
+            padding: 21px;
+        }
+
+        .important-form ul {
+            list-style-type: disc;
+            margin-left: 40px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .important-form li {
+            margin-bottom: 10px;
+            list-style-type: none;
+        }
+
+        /* BAGIAN FOOTER */
+        :root {
+            --radius: 0.75rem;
+            --max-width: 1200px;
+            --transition: 0.3s ease;
+            --icon-size: 24px;
+        }
+
+        .box-web {
+            display: flex;
+        }
+
+        .instagram {
+            margin: 10px;
+        }
+
+        .github {
+            margin: 10px;
+        }
+
+        .box-web i {
+            color: #080808;
+            font-size: 21px;
+            border: 1.5px solid rgb(0, 0, 0);
+            padding: 5px;
+            border-radius: 40px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .box-web i:hover {
+            box-shadow: 0px 0px 14px rgb(40, 56, 56);
+            background-color: #080808;
+            color: white;
+            transform: translateY(1px) scale(1.2);
+        }
+
+        footer.footer {
+            background: rgba(255, 255, 255, 0.733);
+            padding: 3rem 1rem;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+        }
+
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1 1 180px;
+            min-width: 180px;
+        }
+
+        .footer-section li {
+            list-style-type: none;
+        }
+
+        .footer-section h2 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: rgb(26, 26, 24);
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: rgb(68, 61, 61);
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        .footer-nav a:hover,
+        .footer-nav a:focus {
+            color: #1f2937;
+            outline: none;
+            text-decoration: underline;
+        }
+
+        .footer-contact {
+            font-weight: 500;
+            color: #141414;
+            word-break: break-word;
+        }
+
+        .footer-contact a {
+            color: #374151;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer-contact a:hover,
+        .footer-contact a:focus {
+            color: #1f2937;
+            text-decoration: underline;
+            outline: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgb(53, 53, 53);
+            user-select: none;
+            border-top: 1.7px solid #6b6b6b;
+            padding-top: 1rem;
+            font-weight: 400;
+        }
+
+        @media (max-width: 640px) {
+            .footer-top {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-section {
+                min-width: auto;
+            }
+        }
+    </style>
+
+    <header>
+        <nav class="container" aria-label="Primary Navigation">
+            <div class="logo">EmengCTA</div>
+            <div class="nav-links">
+                <!--<a href="#posts" tabindex="0">Blog</a>
+                <a href="#contact" tabindex="0">Contact</a>-->
+                <a href="/index.html" tabindex="0" style="color: rgb(0, 0, 0);"><i class="fas fa-arrow-left"
+                        style="color: rgb(0, 0, 0); font-weight: 800;"></i> Back</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        <div class="box-container">
+            <div class="content">
+                <form action="">
+                    <div class="header">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="input-box">
+                        <div class="user"><i class="fas fa-user"></i></div>
+                        <input type="text" placeholder="Email" required>
+                        <div class="lock"><i class="fas fa-lock"></i></div>
+                        <input type="password" id="pwd" placeholder="Password" required>
+                    </div>
+                    <div class="snow">
+                        <input type="checkbox" onclick="pwd.type = this.checked ? 'text' : 'password'">
+                        <p>snow password</p>
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Login</button>
+                    </div>
+                    <div class="link">
+                        <p>don't have to account? <a href="#">Sign</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container2">
+            <div class="content2">
+                <form action="">
+                    <div class="header2">
+                        <h3>Sign</h3>
+                    </div>
+                    <div class="input-box2">
+                        <input type="text" placeholder="Username" required>
+                        <input type="tel" placeholder="Number phone" required>
+                        <input type="password" placeholder="password" required>
+                        <input type="password" id="pwd" placeholder="Repeat password" required>
+                    </div>
+                    <div class="btn2">
+                        <button type="submit">Sign</button>
+                    </div>
+                    <div class="link2">
+                        <p>Already to account? <a href="#">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="container" aria-label="Paragraf dengan daftar bahasa pemrograman populer">
+        <h1 class="intro">
+            login and registration form scenery theme:
+        </h1>
+        <ul class="styled-list">
+            <li>appearance: The appearance is pleasing to the eye and quite simple with
+                a mixture of mountains, so the impression is simple and quite elegant.
+            </li>
+            <li>utility: The use of this website is as a login and registration, as its function is to enter the
+                website...
+                it's like wanting to go to school but having to register first to get an ID card which is a sign that we
+                are
+                students at that school.
+            </li>
+            <li>Login: Login is an authentication process performed by a user to access a system or application. This
+                process
+                usually involves the user entering credentials, such as a username and password. The purpose of login is
+                to ensure that only
+                authorized users can access certain information or features within the system. After successfully
+                logging in, the user will be
+                granted access to their account and can use the available services.
+            </li>
+            <li>Register: Sign up (or registration) is the initial process carried out by a user to create a new account
+                in a system or application.
+                This process usually involves filling out a form with personal information, such as name, email address,
+                and password.
+            </li>
+            <li>conclusion: In short, registering is the first step to create an account, while logging in is the
+                process of accessing an account that
+                has been created. Both are important parts of security and identity management in digital systems.
+            </li>
+            <li>
+                <span style="font-weight: 700;">important point:</span> This login and register form is not yet equipped
+                with a lot of javascript logic, this form
+                also cannot be used as you login and register on a website, because in this form there are only HTML,
+                CSS, JS programming languages. Javascript is
+                only in the view password section. There are no basic security features such as password encryption
+                during storage, server-side validation, and authentication mechanisms to protect user data.
+            </li>
+        </ul>
+    </section>
+
+    <div class="important-form">
+        <p style="font-weight: 700;">Creating a simple login and register feature is an important first step in many web
+            and mobile applications.
+        </p>
+        <ul>
+            <li>A login form usually consists of input for a username or email and password, accompanied by a button to
+                send the data to an authentication system.</li>
+            <li>The registration form allows users to create a new account by filling in data such as name, email, and
+                password with basic validation to ensure that the data
+                complies with the specified rules.</li>
+            <li>This form was created using HTML, CSS, Javascript</li>
+        </ul>
+        <p style="font-weight: 600;">if you like this login and registration form you can contact me via Email and
+            contact</p>
+    </div>
+
+    <Script>
+        /* notifikasi offline dan online */
+        window.addEventListener("online", () => alert("you are online"))
+        window.addEventListener("offline", () => alert("you are offline"))
+    </Script>
+
+</body>
+
+</html>
